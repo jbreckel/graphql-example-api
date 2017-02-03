@@ -27,12 +27,15 @@ script:
 # When we have succeeded, then release to staging. Then, when QA'ed,
 # the staging app will be promoted to production.
 after_success:
-  - .travis/after_success.sh
+  - .travis/after-success.sh
 
 branches:
   only:
   - master
 
 notifications:
+  email:
+    on_success: never # default: change
+    on_failure: always # default: always
   slack:
     secure: olaEfS4ESRZlQK3Ead/m2HKio+TE3UPeX9uQX54qsaKcKDbP9jYhO8OaDOfEvh4Zgp/VSyN1ak0sRzaWih5gu0qEtnEXu1Hq0dsWEOxKOgp7dmVnhXCsZDC44MPySnodfmg5+rhNurnRxhHyECVjxR4d22oumcEagz7FKigC7xiU0OLLy1kaRR44VRN0RpaEgwJRrlSPa7kndZrUNHNrGL7hJcPb4HVFomR136muHQRXlQw7BSH3UT7vyS28eTWKsA1tLSFKIqDGKRmUdQi606zL48Y/fhyUxavOoAHIf/yQO7H7jSPgLgrOBsmrNuk0mNaK85WM3PglO/MW8+seyHFQTnPgD9//ASRVJiwKF5R2nqil4XCNmec1jbya+odIZacmXehKELGjm/y4l2Fs/ATfrTAtZ8gkq+8GtrzTMMUBZYSBTAj6WmjyohgnVbEjtWG7FhUrl+c2PXOiZsugNmkgbYfCBiQQK8CxbKTSyqd5KMwaVJepVQm2zTCT/BigReaznMNYVbrqDG+Hi0zshIbMpIifhukw8VwL4cQwWvC7WVg+I7cJnThQATL00MJezxndsNVrtaTXXseFcaixR6IKmqcTbkkCpA96gkQX0Hsv95xh+K5iqR/lXRmC3opV0+IKmHGGYrwJ5v+ppYrDSensPI7c6U7eGZVLL9gHSr0=
