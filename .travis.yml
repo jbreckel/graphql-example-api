@@ -1,0 +1,38 @@
+sudo: required
+
+language: node_js
+node_js:
+  - node
+
+cache:
+  - node_modules
+
+services:
+  - docker
+
+env:
+  global:
+  - secure: wAlAR2g9SXWyQeOFJ6KE8YmH/NZBD3jN1SQPmHo2wrJ019CpEWvpWywETbI3l/ek30t8A9WJ2mwNUc4s/mKHhMwREU9/QFd6fz15UV+7NegRdczvdxfPe0+Of3qHrX0c2kl06aKekN9NouLDq3mdvpPUNBNxzJLs5U0kLcUHAx68ETvY0MVG/T9y+RXKQSoE1fbnowblkMX3QTxgeGLWAMnbTG8BBQXlreBfKZkuCGYqwYbuMmwwTR/VROEBiiYE8udXIwXW/99yPNYwaZp7ESsRzmZTZ3nvPNaTNPSA6NTuByqi4G8LoTOFagfmmCM7wCeuHywk/K8EQnGhQ3O8ko1w2kEwjY2JRbszNOV2iIUSGfROqbmekjC0q/0OHFdYuJ4Yzr3V4C09vRtDHw8E9YCu5dDQZQO/Cx81n4LBDs7YbMjXTmKg8wJYvGONfnCKGk8em5zXXQJQbjEsQHXgttvPjIqap9Cxvw0bJeRvq8UGHUkYr9wk0QCA7AnPM1SdKm3JbYw/s9AjN2uvSKPrrLWGALxTjWdh+F6lMUcveVHWtBUDvMa8jf7+s0jJaEc3f6ZAPhtuPRAF7It3WPOY9Cor2YM0ZA7YCDk3QFysKJYhVWLv5XuhcYxYoQXBco2rfAPkDX9cMNCf3fnTX/wlG0+8AN5uV8V2rQdUxkIT7zk=
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+
+install:
+  - yarn
+
+script:
+  - yarn test
+
+# When we have succeeded, then release to staging. Then, when QA'ed,
+# the staging app will be promoted to production.
+after_success:
+  - .travis/after_success.sh
+
+branches:
+  only:
+  - master
+
+notifications:
+  slack:
+    secure: olaEfS4ESRZlQK3Ead/m2HKio+TE3UPeX9uQX54qsaKcKDbP9jYhO8OaDOfEvh4Zgp/VSyN1ak0sRzaWih5gu0qEtnEXu1Hq0dsWEOxKOgp7dmVnhXCsZDC44MPySnodfmg5+rhNurnRxhHyECVjxR4d22oumcEagz7FKigC7xiU0OLLy1kaRR44VRN0RpaEgwJRrlSPa7kndZrUNHNrGL7hJcPb4HVFomR136muHQRXlQw7BSH3UT7vyS28eTWKsA1tLSFKIqDGKRmUdQi606zL48Y/fhyUxavOoAHIf/yQO7H7jSPgLgrOBsmrNuk0mNaK85WM3PglO/MW8+seyHFQTnPgD9//ASRVJiwKF5R2nqil4XCNmec1jbya+odIZacmXehKELGjm/y4l2Fs/ATfrTAtZ8gkq+8GtrzTMMUBZYSBTAj6WmjyohgnVbEjtWG7FhUrl+c2PXOiZsugNmkgbYfCBiQQK8CxbKTSyqd5KMwaVJepVQm2zTCT/BigReaznMNYVbrqDG+Hi0zshIbMpIifhukw8VwL4cQwWvC7WVg+I7cJnThQATL00MJezxndsNVrtaTXXseFcaixR6IKmqcTbkkCpA96gkQX0Hsv95xh+K5iqR/lXRmC3opV0+IKmHGGYrwJ5v+ppYrDSensPI7c6U7eGZVLL9gHSr0=

@@ -4,5 +4,8 @@
   "main": "index.js",
   "repository": "git@github.com:jbreckel/graphql-example-api.git",
   "author": "Julius Breckel <julius.breckel@signavio.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "node index"
+  }
 }
