@@ -43,3 +43,4 @@ docker build . -t $IMAGE_NAME
 
 docker tag $IMAGE_NAME registry.heroku.com/graphql-example-api/web
 docker push registry.heroku.com/graphql-example-api/web
+wait
