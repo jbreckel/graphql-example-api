@@ -1,0 +1,19 @@
+{
+  "plugins": [
+    "transform-class-properties",
+    "transform-flow-strip-types",
+    "transform-es2015-destructuring",
+    "transform-object-rest-spread",
+  ],
+  "presets": [
+    "latest",
+    "stage-0"
+  ],
+  "env": {
+    "build": {
+      "presets": [
+        "babili"
+      ],
+    },
+  },
+}
