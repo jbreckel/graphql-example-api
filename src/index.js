@@ -21,6 +21,11 @@ app.use('/graphql', (req: $Request, res: $Response) => {
   res.send('Hello GraphlQL!')
 })
 
+app.use('/graphiql', (req: $Request, res: $Response) => {
+  res.status(200)
+  res.send('Hello GraphlIQL!')
+})
+
 app.use('*', (req: $Request, res: $Response) => {
   res.status(200)
   res.send('Hello World!')
