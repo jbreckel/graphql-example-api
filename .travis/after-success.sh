@@ -2,7 +2,7 @@
 
 set -e # Abort script at first error
 # set -u # Disallow unset variables
-# set -v
+set -v
 
 # Only run when not part of a pull request and on the master branch
 if [[ $TRAVIS_PULL_REQUEST != "false" ]] || [[ $TRAVIS_BRANCH != "master" ]]
@@ -44,3 +44,4 @@ docker build . -t $IMAGE_NAME
 docker tag $IMAGE_NAME registry.heroku.com/graphql-example-api/web
 docker push registry.heroku.com/graphql-example-api/web
 wait
+echo "All finished"
