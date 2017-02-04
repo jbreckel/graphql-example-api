@@ -41,6 +41,8 @@ yarn install --prod --pure-lockfile --no-progress
 
 docker build . -t $IMAGE_NAME
 
+docker login -u="$DOCKER_USERNAME" -p="$HEROKU_API_KEY" registry.heroku.com
+
 docker tag $IMAGE_NAME registry.heroku.com/graphql-example-api/web
 docker push registry.heroku.com/graphql-example-api/web
 wait
