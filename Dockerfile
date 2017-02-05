@@ -2,9 +2,6 @@ from node:alpine
 
 MAINTAINER Julius Breckel <julius.breckel@gmail.com>
 
-# only while dev
-# RUN apk add --update bash && rm -rf /var/cache/apk/*
-
 WORKDIR /opt/app
 
 RUN mkdir -p /opt

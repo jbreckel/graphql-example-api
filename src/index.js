@@ -1,6 +1,7 @@
 // @flow
 import express from 'express'
-import type { $Request, $Response } from 'express'
+
+import middlewares from './middlewares'
 
 const {
   PORT,
@@ -16,20 +17,8 @@ if (!PORT) {
 
 const app = express()
 
-app.use('/graphql', (req: $Request, res: $Response) => {
-  res.status(200)
-  res.send('Hello GraphlQL!')
-})
+app.use(middlewares)
 
-app.use('/graphiql', (req: $Request, res: $Response) => {
-  res.status(200)
-  res.send('Hello GraphlIQL!')
-})
-
-app.use('*', (req: $Request, res: $Response) => {
-  res.status(200)
-  res.send('Hello World!')
-})
 
 app.listen(PORT, (err: Error) => {
   if (err) throw err
