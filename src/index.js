@@ -19,11 +19,9 @@ const app = express()
 
 app.use(middlewares)
 
-
-app.listen(PORT, (err: Error) => {
+app.listen(Number(PORT), (err?: ?Error) => {
   if (err) throw err
   /* eslint-disable no-console */
-  // $FlowFixMe
-  console.log(`server started on ${PORT}`)
+  console.log('server started on', PORT)
   /* eslint-enable no-console */
 })
